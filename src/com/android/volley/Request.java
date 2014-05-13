@@ -289,6 +289,9 @@ public abstract class Request<T> implements Comparable<Request<T>> {
      * @param url
      */
     public void setUrl(String url){
+        if(mUrl != null){
+            throw new IllegalStateException();
+        }
         mUrl = url;
     }
 

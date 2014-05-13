@@ -67,7 +67,7 @@ public abstract class Request<T> implements Comparable<Request<T>> {
     private final int mMethod;
 
     /** URL of this request. */
-    private final String mUrl;
+    private String mUrl;
     
     /** The redirect url to use for 3xx http responses */
     private String mRedirectUrl;
@@ -282,7 +282,16 @@ public abstract class Request<T> implements Comparable<Request<T>> {
     public String getUrl() {
         return (mRedirectUrl != null) ? mRedirectUrl : mUrl;
     }
-    
+
+    /**
+     * Sets the url of the Request
+     * Intended to be used in subclasses constructor, never later
+     * @param url
+     */
+    public void setUrl(String url){
+        mUrl = url;
+    }
+
     /**
      * Returns the URL of the request before any redirects have occurred.
      */
